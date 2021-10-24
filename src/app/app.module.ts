@@ -9,9 +9,6 @@ import { InputTextModule } from "primeng/inputtext";
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
-
 /*componentes*/
 
 import { AppComponent } from './app.component';
