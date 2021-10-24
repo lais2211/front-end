@@ -1,24 +1,25 @@
 <div id="interface">
 <header>
-  <h1>Status de estabilidade de Nf</h1>
-  <h2>Nf eletrônica de todo o Brasil</h2>
+  <h1>{{"Status de estabilidade de Nf" | uppercase}}</h1>
+  <h2>{{"Nf eletrônica de todo o Brasil" | lowercase}}</h2>
 </header>
 
 <nav>
     <ul>
 
       <p>Clique e veja o status atual de todos os estados: </p>
-      <li> <button pButton type="button" label="Atualizar" icon="pi pi-refresh" class="p-button-secondary"></button> </li>
+      <li> <button (click)="statusAtual()" pButton type="button" label="Atualizar" icon="pi pi-refresh" class="p-button-secondary"></button> </li>
 
       <p>Clique e veja o estado atual com maior instabilidade: </p>
-      <li> <button pButton type="button" icon="pi pi-chart-bar " label="Maior Instabilidade" class="p-button-secondary"></button> </li>
+      <li> <button (click)="statusInstabilidade()" pButton type="button" icon="pi pi-chart-bar " label="Maior Instabilidade" class="p-button-secondary"></button> </li>
 
       <p>Filtre por uma data:</p>
       <nav id="button">
-        <button pButton type="button" style="font-size:2px" icon="pi pi-check" class="p-button-secondary" ></button>
+        <button pButton (click)="statusData(dt.value)" type="button" style="font-size:2px" icon="pi pi-check" class="p-button-secondary" ></button>
       </nav>
       <li> <div class="sizes">
         <input
+          #dt
           type="Date"
           class="p-inputtext-sm"
           placeholder="DD/MM/YYYY"
@@ -27,13 +28,14 @@
 
       <p>Filtre por um estado:</p>
       <nav id="button2">
-        <button pButton type="button" style="font-size:2px" icon="pi pi-check" class="p-button-secondary" ></button>
+        <button pButton type="button" (click)="statusEstado(st.value)" style="font-size:2px" icon="pi pi-check" class="p-button-secondary" ></button>
       </nav>
       <li> <div class="sizes">
         <input
+          #st
           type="text"
           class="p-inputtext-sm"
-          placeholder="Digite um estado"
+          placeholder="Ex: GO"
           pInputText/>
       </div> </li>
       </ul>
@@ -49,7 +51,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-status>
         <tr>
-          <td>{{status.name}}</td>
+          <td>{{status.estado}}</td>
           <td>{{status.status}}</td>
         </tr>
       </ng-template>
